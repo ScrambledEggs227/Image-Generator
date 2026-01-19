@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 25 30% 12%;
+
+    --card: 40 30% 98%;
+    --card-foreground: 25 30% 12%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 25 30% 12%;
+
+    --primary: 25 85% 55%;
+    --primary-foreground: 40 33% 98%;
+
+    --secondary: 35 60% 92%;
+    --secondary-foreground: 25 30% 15%;
+
+    --muted: 35 25% 90%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 15 75% 45%;
+    --accent-foreground: 40 33% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 30% 85%;
+    --input: 35 30% 88%;
+    --ring: 25 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(25, 85%, 55%) 0%, hsl(35, 90%, 60%) 50%, hsl(15, 75%, 45%) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(40, 33%, 97%) 0%, hsl(35, 40%, 94%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(25 30% 20% / 0.1);
+    --shadow-glow: 0 8px 40px -8px hsl(25 85% 55% / 0.3);
+    --shadow-card: 0 2px 12px -2px hsl(25 30% 20% / 0.08);
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 40 25% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 40 25% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 40 25% 95%;
+
+    --primary: 30 85% 55%;
+    --primary-foreground: 25 30% 8%;
+
+    --secondary: 25 20% 18%;
+    --secondary-foreground: 40 25% 90%;
+
+    --muted: 25 15% 20%;
+    --muted-foreground: 35 15% 60%;
+
+    --accent: 20 75% 50%;
+    --accent-foreground: 25 30% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 30 85% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(30, 85%, 50%) 0%, hsl(40, 90%, 55%) 50%, hsl(20, 75%, 40%) 100%);
+    --gradient-warm: linear-gradient(180deg, hsl(25, 25%, 8%) 0%, hsl(25, 20%, 12%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 8px 40px -8px hsl(30 85% 55% / 0.4);
+    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.2);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background: var(--gradient-warm);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-pulse-gentle {
+    animation: pulseGentle 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--secondary)) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
